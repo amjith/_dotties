@@ -1,0 +1,9 @@
+[user]
+	name = Amjith Ramanujam
+	email = amjith.r@gmail.com
+
+[alias]
+        br = branch
+        co = checkout
+        ci = commit
+        st = status
