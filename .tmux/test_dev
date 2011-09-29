@@ -1,0 +1,6 @@
+    neww -tEmacs 'vim'                # Create a new window and launch vim.
+    splitw -h -p 50 'python'  # Split pane 0 vertically by 50% and launch python
+    selectp -t 1              # Select pane 1
+    splitw -v -p 25 'bpython'   # Split pane 1 horizontally by 25% and launch irssi
+    selectp -t 0              # Select pane 0
+

@@ -1,0 +1,15 @@
+alias ll='ls -l'
+alias la='ls -A'
+alias l='ls -CF'
+alias p='cd -'
+alias md='mkdir'
+alias cd..="cd .."
+alias realias="source $HOME/.bash_aliases"
+alias refunc="source $HOME/.bash_functions"
+alias c1dlp="ssh -X product@f01m2lc1d0.lehi.micron.com"
+alias c1dle="ssh -X amjidanutpan@ef012lc1d0.lehi.micron.com"
+alias c1dbe="ssh -X product@ef02m13c1d.micron.com"
+alias lel7="ssh -X amjidanu@lel007.lehi.micron.com"
+alias l74a='cd /home/amjidanu/source/c1d/l74a/'
+alias ra='cd /home/amjidanu/source/c1d/l74a/'
+alias com='cd /home/amjidanu/source/c1d/l74a/'

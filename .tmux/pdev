@@ -1,0 +1,4 @@
+splitw -v -p 25
+selectp -t 1
+splitw -h -p 50 'bpython'
+selectp -t 0
