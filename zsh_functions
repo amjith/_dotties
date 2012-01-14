@@ -1,0 +1,12 @@
+mkcd() {
+    if [[ -z "$1" ]] ; then
+    echo "usage: \e[1;36mmkcd \e[1;0m< directory >"
+    echo "       Creates the specified directory and then changes it to pwd"
+    else
+    if [[ ! -d $1 ]] ; then
+            mkdir -p $1 && cd $1
+    else
+            cd $1
+    fi
+    fi
+}
