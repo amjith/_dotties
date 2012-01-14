@@ -24,12 +24,20 @@ CASE_SENSITIVE="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git autojump brew osx)
+if [[ "$OSTYPE" != "linux-gnu" ]] then
+	plugins=(git autojump brew osx python django)
+else
+	plugins=(git autojump python django) 
+fi
 
 source $ZSH/oh-my-zsh.sh
-source $HOME/.zsh_functions
+source $HOME/_dotties/zsh_functions
 
 # Customize to your needs...
-export PATH=$HOME/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
-
-source /usr/local/bin/virtualenvwrapper.sh
+if [[ "${OSTYPE}" != "linux-gnu" ]] then
+	export PATH=$HOME/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
+	source /usr/local/bin/virtualenvwrapper.sh
+else
+	export PATH=/usr/local/bin:/usr/bin:/bin:/usr/games:/usr/lib/qt4/bin:/usr/NX/bin:/usr/NX/bin:/home/amjith/bin:/opt/google_appengine:/usr/NX/bin:/home/amjith/bin:/usr/NX/bin
+	source /usr/bin/virtualenvwrapper.sh
+fi
