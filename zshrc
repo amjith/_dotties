@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="tjkirch"
 
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
@@ -27,7 +27,7 @@ CASE_SENSITIVE="true"
 if [[ "${OSTYPE}" != "linux-gnu" ]] then
 	plugins=(git autojump brew osx python django)
 else
-	plugins=(git autojump python django) 
+	plugins=(git python django) 
 fi
 
 source $ZSH/oh-my-zsh.sh
@@ -41,3 +41,4 @@ else
 	export PATH=/usr/local/bin:/usr/bin:/bin:/usr/games:/usr/lib/qt4/bin:/usr/NX/bin:/usr/NX/bin:/home/amjith/bin:/opt/google_appengine:/usr/NX/bin:/home/amjith/bin:/usr/NX/bin
 	source /usr/bin/virtualenvwrapper.sh
 fi
+
