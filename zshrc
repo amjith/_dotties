@@ -24,7 +24,7 @@ CASE_SENSITIVE="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-if [[ "$OSTYPE" != "linux-gnu" ]] then
+if [[ "${OSTYPE}" != "linux-gnu" ]] then
 	plugins=(git autojump brew osx python django)
 else
 	plugins=(git autojump python django) 
