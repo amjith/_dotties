@@ -20,8 +20,7 @@ HISTFILESIZE=2000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 export PROMPT_COMMAND="history -a"
-export http_proxy="http://amjidanutpan:Time2Code@proxy.lehi.micron.com"
-export https_proxy="https://amjidanutpan:Time2Code@proxy.lehi.micron.com"
+
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
