@@ -13,3 +13,5 @@ alias lel7="ssh -X amjidanu@lel007.lehi.micron.com"
 alias l74a='cd /home/amjidanu/source/c1d/l74a/'
 alias ra='cd /home/amjidanu/source/c1d/l74a/'
 alias com='cd /home/amjidanu/source/c1d/l74a/'
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
