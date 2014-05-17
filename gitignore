@@ -1,0 +1,11 @@
+*.pyc
+*.pyo
+*.bak
+*~
+tags
+.ropeproject
+.DS_Store
+*.iml
+*.iws
+*.ipr
+.idea
