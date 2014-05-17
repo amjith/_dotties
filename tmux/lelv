@@ -1,2 +1,0 @@
-splitw -v -p 20 'ssh -X product@f01m2lc1d0.lehi.micron.com'
-neww 'ssh -X product@f01m2lc1d0.lehi.micron.com'

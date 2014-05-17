@@ -5,8 +5,10 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="tjkirch"
-export TERM=xterm-256color
+#ZSH_THEME="gentoo"
+#ZSH_THEME="tjkirch"
+#export TERM=xterm-256color
+ZSH_THEME="norm"
 
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
@@ -32,14 +34,45 @@ else
 fi
 
 source $ZSH/oh-my-zsh.sh
-source $HOME/_dotties/zsh_functions
+source $HOME/.zsh_functions
+source $HOME/.zsh_aliases
 
 # Customize to your needs...
 if [[ "${OSTYPE}" != "linux-gnu" ]] then
-	export PATH=$HOME/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
+	export PATH=$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
 	source /usr/local/bin/virtualenvwrapper.sh
 else
 	export PATH=/usr/local/bin:/usr/bin:/bin:/usr/games:/usr/lib/qt4/bin:/usr/NX/bin:/usr/NX/bin:/home/amjith/bin:/opt/google_appengine:/usr/NX/bin:/home/amjith/bin:/usr/NX/bin
 	source /usr/bin/virtualenvwrapper.sh
 fi
 
+# Set editor to a command-line mvim 
+EDITOR=('mvim' '-v')
+export EDITOR
+
+# Set docker host to boot2docker
+export DOCKER_HOST=tcp://localhost:4243
+
+# rbenv init
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# fasd init
+eval "$(fasd --init auto)"
+
+# Make 'less' powerful. This lets less list files inside tar.gz
+LESSOPEN="|/usr/local/bin/lesspipe.sh %s"
+export LESSOPEN
+
+if [ -f /usr/libexec/java_home ]; then
+  export JAVA_HOME="$(/usr/libexec/java_home)"
+fi
+
+# This allows interactive comments on command line.
+setopt interactivecomments
+
+ulimit -n 4096
+
+# Golang settings
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/code/go
+export PATH=$PATH:$GOPATH/bin

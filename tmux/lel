@@ -1,4 +1,0 @@
-splitw -v -p 25 'ssh amjidanu@lel007.lehi.micron.com'
-selectp -t 1
-splitw -h -p 50 'ssh amjidanu@lel007.lehi.micron.com'
-selectp -t 0
