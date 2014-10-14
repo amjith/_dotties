@@ -8,3 +8,6 @@ ln -s "$PWD"/gitconfig $HOME/.gitconfig
 ln -s "$PWD"/tmux.conf $HOME/.tmux.conf
 
 ln -s "$PWD"/vimrc $HOME/.vimrc
+
+mkdir -p $HOME/.config
+ln -s "$PWD"/flake8 $HOME/.config/flake8
