@@ -9,3 +9,5 @@ tags
 *.iws
 *.ipr
 .idea
+*.swp
+*.swo

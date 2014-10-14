@@ -7,8 +7,10 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="gentoo"
 #ZSH_THEME="tjkirch"
-#export TERM=xterm-256color
-ZSH_THEME="norm"
+ZSH_THEME="agnoster"
+export TERM=xterm-256color
+#ZSH_THEME="norm"
+#ZSH_THEME="agnoster"
 
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
@@ -71,6 +73,11 @@ fi
 setopt interactivecomments
 
 ulimit -n 4096
+
+# Maven settings
+export M2_HOME=$HOME/maven-3.2.2
+export M2=$M2_HOME/bin
+export PATH=$PATH:$M2
 
 # Golang settings
 export PATH=$PATH:/usr/local/go/bin
