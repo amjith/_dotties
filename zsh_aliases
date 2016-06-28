@@ -1,11 +1,11 @@
+alias realias="source $HOME/.zsh_aliases"
+alias refunc="source $HOME/.zsh_functions"
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
 alias p='cd -'
 alias md='mkdir'
 alias cd..="cd .."
-alias realias="source $HOME/.zsh_aliases"
-alias refunc="source $HOME/.zsh_functions"
 alias vim='mvim -v'
 alias vi='mvim -v'
 #alias pbcopy='xclip -selection clipboard'
@@ -13,3 +13,4 @@ alias vi='mvim -v'
 alias rsr='VERSIONER_PYTHON_PREFER_32_BIT=yes arch -i386 runsnake32'
 alias wo='workon'
 alias ctags='ctags --fields=+l'
+alias this="python -c 'import this'"

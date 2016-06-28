@@ -1,33 +1,26 @@
 set nocompatible
 filetype off
 
-let g:vundle_default_git_proto = 'git'
-
  set rtp+=~/.vim/bundle/Vundle.vim
  call vundle#begin()
 
 " let Vundle manage Vundle
 " required! 
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " Bundle List - Original Repo
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-rsi'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-ragtag'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/syntastic'
-Plugin 'Lokaltog/vim-powerline'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'sjl/gundo.vim'
-Plugin 'mutewinter/vim-indent-guides'
-Plugin 'bling/vim-bufferline'
-"Plugin 'davidhalter/jedi-vim'
 Plugin 'amjith/rtf-highlight'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'rking/ag.vim'
@@ -36,17 +29,21 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'fatih/vim-go'
 Plugin 'SirVer/ultisnips'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'tpope/vim-vividchalk'
 Plugin 'jmcantrell/vim-virtualenv'
-Plugin 'Rykka/riv.vim'
-Plugin 'Rykka/InstantRst'
-Plugin 'whatyouhide/vim-gotham'
-Plugin 'chriskempson/base16-vim'
+Plugin 'jiangmiao/auto-pairs'
+"Plugin 'Yggdroot/indentLine'
+Plugin 'ElmCast/elm-vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'alvan/vim-closetag'
+Plugin 'godlygeek/tabular'
+Plugin 'gorodinskiy/vim-coloresque'
+Plugin 'vim-airline/vim-airline'
 
 " Vim-script Repo
 Plugin 'L9'
 "Plugin 'AutoComplPop'
-Plugin 'Auto-Pairs'
+"Plugin 'Auto-Pairs'
 Plugin 'matchit.zip'
 Plugin 'vimwiki'
 Plugin 'EasyGrep'
@@ -59,11 +56,12 @@ Plugin 'sjl/badwolf'
 " All of the Plugins must be added before the following line
 call vundle#end()
 
-"set background=light
+set background=light
 "if has("gui_running")
     "colorscheme solarized
 "else
-"colorscheme molokai
+"colorscheme badwolf
+colorscheme solarized
 "endif
 
 if has("syntax")
@@ -98,7 +96,7 @@ set linespace=0		 " No extra spaces between rows
 set winminheight=0	 " windows can be 0 line high 
 set infercase        " Fix completion to work the same as search + smartcase
 set ruler            " Show cursor position all the time
-set cursorline       " Highlight the current line
+"set cursorline       " Highlight the current line
 set autoindent       " Auto indent
 
 
@@ -115,10 +113,10 @@ set expandtab
 set backupdir=~/tmp
 set directory=~/tmp
 if has("autocmd")
-  autocmd FileType html,css,scss,ruby setlocal ts=2 sts=2 sw=2 expandtab
-  autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
+  autocmd FileType html,css,scss,ruby,javascript setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType markdown setlocal wrap linebreak nolist
   autocmd BufNewFile,BufRead *.rss setfiletype xml
+  autocmd BufNewFile,BufRead *.es6 setfiletype javascript
 endif
 
 " Toggles & Switches (Leader commands) {{{1
@@ -179,7 +177,7 @@ nnoremap x "_x
 vnoremap p "_dP
 
 "Set colorcolumn to indicate the 80 char violation"
-set colorcolumn=80
+"set colorcolumn=80
 
 " Search for tags file up the directory tree
 set tags=tags;/
@@ -207,18 +205,12 @@ set t_Co=256 " Explicitly tell vim to support 256 colors
 "highlight LongLine ctermbg=green guibg=green
 "match LongLine '\%>80v.\+'
 
-" Powerline options
-set encoding=utf-8
-let g:Powerline_symbols = 'fancy'
-"let g:Powerline_dividers_override = ['>>', '>', '<<', '<']
-let g:Powerline_theme = 'solarized256'
-
 " Disable <CR> for AutoPairs
 let g:AutoPairsMapCR = 0
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType html,markdown,javascript setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
@@ -236,6 +228,9 @@ let g:ctrlp_custom_ignore = {
 let g:EasyGrepMode = 2
 let g:indent_guides_guide_size = 1
 
+" air-line config
+let g:airline#extensions#tabline#enabled = 1
+
 " Natural Splits
 set splitbelow
 set splitright
@@ -243,6 +238,8 @@ set splitright
 " Syntastic config
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
+"let g:syntastic_javascript_checkers = ['jshint']
 
 " YouCompleteMe config
 let g:ycm_min_num_of_chars_for_completion = 1
@@ -271,30 +268,47 @@ endfunction
 nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
 nmap _= :call Preserve("normal gg=G")<CR>
 
-autocmd BufWritePre *.go,*.py,*.js :call Preserve("%s/\\s\\+$//e")
+autocmd BufWritePre *.go,*.py,*.js,*.es6,*.elm :call Preserve("%s/\\s\\+$//e")
+
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 "au FileType go au BufWritePre <buffer> Fmt
 
-function! g:UltiSnips_Complete()
-    call UltiSnips#ExpandSnippet()
-    if g:ulti_expand_res == 0
-        if pumvisible()
-            return "\<C-n>"
-        else
-            call UltiSnips#JumpForwards()
-            if g:ulti_jump_forwards_res == 0
-               return "\<TAB>"
-            endif
-        endif
-    endif
-    return ""
-endfunction
+" Trigger configuration. 
+let g:UltiSnipsExpandTrigger="<C-s>"
+let g:UltiSnipsJumpForwardTrigger="<C-f>"
+let g:UltiSnipsJumpBackwardTrigger="<C-b>"
 
-au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-"let g:UltiSnipsListSnippets="<c-e>"
-" this mapping Enter key to <C-y> to chose the current highlight item 
-" and close the selection list, same as other IDEs.
-" CONFLICT with some plugins like tpope/Endwise
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-"let g:go_disable_autoinstall = 1
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+let g:elm_format_autosave = 1
+
+" Always set the default shell to bash. This is needed to make syntastic work
+" correctly.
+set shell=/bin/bash
+
+let g:indentLine_char = '│'
+nnoremap <leader>i :IndentLinesToggle<CR>
+
+" Uses silversurfer to do Ctrl-P completion.
+let g:ctrlp_use_caching = 0
+if executable('ag')
+    set grepprg=ag\ --nogroup\ --nocolor
+
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+else
+  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+  let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
+    \ }
+endif
+
+" Show full path of the file in statusline.
+set statusline+=%F
+
+" Enable automatic close tag for the following file types.
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.jsx,*.js"
+
+" Limit syntax highlighting to lines under 200 chars.
+set synmaxcol=200

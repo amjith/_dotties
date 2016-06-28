@@ -1,0 +1,15 @@
+# virtualfish
+
+A Fish Shell wrapper for Ian Bicking's virtualenv, somewhat loosely based on Doug Hellman's virtualenvwrapper for Bourne-compatible shells.
+
+You can get started by [reading the documentation on Read The Docs](http://virtualfish.readthedocs.org/en/latest/). (It's quite short, I promise.)
+
+If virtualfish is useful to you, feel free to [make a weekly gift on Gittip](https://www.gittip.com/adambrenecki/) or [a monthly one on Flattr](https://flattr.com/submit/auto?user_id=adambrenecki&url=https%3A%2F%2Fgithub.com%2Fadambrenecki%2Fvirtualfish%2F).
+
+## A quickstart, for the impatient
+
+1. Download `virtual.fish`, and source it in `.config/fish/config.fish`.
+2. [Add virtualfish to your prompt](http://virtualfish.readthedocs.org/en/latest/install.html#customizing-your-fish-prompt)
+2. `vf new myvirtualenv; which python`
+
+See the docs to find out more about virtualenvwrapper emulation, auto-activation and other plugins, extending virtualfish with events, and more.

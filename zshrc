@@ -7,16 +7,16 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="gentoo"
 #ZSH_THEME="tjkirch"
-ZSH_THEME="agnoster"
+#ZSH_THEME="agnoster"
+ZSH_THEME="apple"
 export TERM=xterm-256color
 #ZSH_THEME="norm"
-#ZSH_THEME="agnoster"
 
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
 
 # Comment this out to disable weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment following line if you want to disable colors in ls
 # DISABLE_LS_COLORS="true"
@@ -32,7 +32,7 @@ CASE_SENSITIVE="true"
 if [[ "${OSTYPE}" != "linux-gnu" ]] then
 	plugins=(git autojump brew pip osx python django)
 else
-	plugins=(git compleat pip python django) 
+	plugins=(git autojump compleat pip python django) 
 fi
 
 source $ZSH/oh-my-zsh.sh
@@ -52,14 +52,9 @@ fi
 EDITOR=('mvim' '-v')
 export EDITOR
 
-# Set docker host to boot2docker
-export DOCKER_HOST=tcp://localhost:4243
 
 # rbenv init
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-# fasd init
-eval "$(fasd --init auto)"
 
 # Make 'less' powerful. This lets less list files inside tar.gz
 LESSOPEN="|/usr/local/bin/lesspipe.sh %s"
@@ -75,11 +70,20 @@ setopt interactivecomments
 ulimit -n 4096
 
 # Maven settings
-export M2_HOME=$HOME/maven-3.2.2
-export M2=$M2_HOME/bin
-export PATH=$PATH:$M2
+#export M2_HOME=$HOME/maven-3.2.2
+#export M2=$M2_HOME/bin
+#export PATH=$PATH:$M2
 
 # Golang settings
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/code/go
 export PATH=$PATH:$GOPATH/bin
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+# Docker boot2docker
+export DOCKER_CERT_PATH=/Users/amjith/.boot2docker/certs/boot2docker-vm
+export DOCKER_TLS_VERIFY=1
+export DOCKER_HOST=tcp://192.168.59.103:2376
+export HOMEBREW_EDITOR='mvim -v'
