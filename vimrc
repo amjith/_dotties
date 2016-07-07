@@ -288,6 +288,9 @@ let g:elm_format_autosave = 1
 " correctly.
 set shell=/bin/bash
 
+" Always show trailing spaces
+set list listchars=tab:»·,trail:·,nbsp:·
+
 let g:indentLine_char = '│'
 nnoremap <leader>i :IndentLinesToggle<CR>
 

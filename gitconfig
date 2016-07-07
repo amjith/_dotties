@@ -18,8 +18,6 @@
 	user = amjith
 [rerere]
 	enabled = true
-[push]
-	default = nothing
 [diff]
 	tool = diffmerge
 [difftool "diffmerge"]
